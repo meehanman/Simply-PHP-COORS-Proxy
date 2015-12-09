@@ -5,11 +5,8 @@ PHP PROXY THAT BYPASES COORS
 USAGE: ?
 */
 
-#Log your requests to a file
 $log_requests=false;
-#Debug your code (Won't send any data but will show a breakdown of your request)
 $debug=false;
-#Will show output and send a request
 $debugOutput=false;
 
 //CORS HEADERS
@@ -21,11 +18,11 @@ header('Access-Control-Allow-Headers: accept, content-type');
 
 //URL + DATA SETUP
 //GET BODY OF REQUEST
+$content = file_get_contents('php://input');
 $json_input = json_decode(file_get_contents('php://input'));
-$content = json_encode($json_input);
+
 //GET URL TO SENT REQUEST TO
 $url = $_GET['url'];
-#$url = $json_input->{'url'};
 
 //Request Information
 $request_method = $_SERVER['REQUEST_METHOD'];
